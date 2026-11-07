@@ -8,6 +8,8 @@ A calm, private, local-first wellness web app with an optional AI companion, gui
 
 [**Live demo →**](https://nbhumika07.github.io/pause/)
 
+<sub>The live demo runs without AI (on-device suggestions only). AI features run locally. See <a href="#set-up-ai-optional">Set up AI</a>.</sub>
+
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/Vanilla_JS-F7DF1E?logo=javascript&logoColor=black)
@@ -204,7 +206,7 @@ Then open <http://localhost:8787>. Without a key, the backend runs in **test mod
 
 ## Deploy
 
-### 1. Website on GitHub Pages
+### Website on GitHub Pages
 
 ```bash
 git add -A
@@ -212,26 +214,15 @@ git commit -m "Describe your change"
 git push
 ```
 
-On GitHub, open **Settings → Pages**, choose **Deploy from a branch**, then **main** and **/ (root)**, and save. The site appears at `https://<username>.github.io/pause/`.
+On GitHub, open **Settings → Pages**, choose **Deploy from a branch**, then **main** and **/ (root)**, and save. The site appears at `https://<username>.github.io/<repo>/`.
 
 > After changing files, bump `VERSION` in `sw.js` so returning visitors get the update.
 
-### 2. AI backend on Cloudflare Workers (free tier)
+### About AI on the live site
 
-```bash
-cd backend
-npx wrangler login
-npx wrangler secret put OPENAI_API_KEY      # paste your key; stored encrypted
-npx wrangler deploy
-```
+The published site is static, so **AI features are off there** and every feature uses its on-device fallback. This is intentional: GitHub Pages can't keep an API key secret, and a key in front-end code would be public. AI runs locally through `backend/dev-server.js`, with the key kept in the git-ignored `backend/.dev.vars`.
 
-Before deploying, set `PROVIDER`, `OPENAI_BASE_URL`, `MODEL` and `ALLOWED_ORIGINS` (your Pages origin without a path, e.g. `https://<username>.github.io`) in `backend/wrangler.toml`. Then put the Worker URL in `assets/js/config.js`:
-
-```js
-window.PAUSE_CONFIG = { aiEndpoint: 'https://pause-ai.<you>.workers.dev', audioAssets: {} };
-```
-
-The Worker URL is public and safe to commit. **Your API key is not. Never put it in any file that's committed.**
+To enable AI online later, deploy `backend/worker.js` to a serverless host. It's ready for Cloudflare Workers (`npx wrangler deploy` from `backend/`, with the key added via `npx wrangler secret put`). Then set the Worker URL as `aiEndpoint` in `assets/js/config.js`.
 
 ## Privacy and safety
 
