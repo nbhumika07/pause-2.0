@@ -1,0 +1,13 @@
+# Cloudflare Worker config for the Pause AI backend.
+# Secrets (API keys) are NOT stored here. Add them with:
+#   npx wrangler secret put ANTHROPIC_API_KEY
+name = "pause-ai"
+main = "worker.js"
+compatibility_date = "2026-10-01"
+
+[vars]
+PROVIDER = "anthropic"
+MODEL = "claude-haiku-5-5"
+# Your GitHub Pages origin (no path) plus local testing:
+ALLOWED_ORIGINS = "https://nbhumika07.github.io,http://localhost:8787,http://localhost:8000"
+RATE_LIMIT = "40"

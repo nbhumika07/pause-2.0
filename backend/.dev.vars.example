@@ -1,0 +1,14 @@
+# Copy this file to .dev.vars (it is git-ignored) for local testing.
+# PROVIDER: mock (test mode, no key needed) | anthropic | openai
+PROVIDER=mock
+
+# For Anthropic (Claude):
+# PROVIDER=anthropic
+# MODEL=claude-haiku-5-5
+# ANTHROPIC_API_KEY=sk-ant-...
+
+# For any OpenAI-compatible API (OpenAI, Google Gemini's OpenAI endpoint, Groq, OpenRouter...):
+# PROVIDER=openai
+# OPENAI_BASE_URL=https://api.openai.com/v1
+# MODEL=your-model-name
+# OPENAI_API_KEY=...

@@ -1,0 +1,10 @@
+{
+  "name": "pause-ai-backend",
+  "private": true,
+  "type": "module",
+  "description": "Serverless AI backend for Pause (Cloudflare Worker).",
+  "scripts": {
+    "dev": "node dev-server.js",
+    "deploy": "npx wrangler deploy"
+  }
+}

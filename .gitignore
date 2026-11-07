@@ -1,0 +1,18 @@
+# --- Secrets: never commit ---
+backend/.dev.vars
+.env
+.env.*
+*.env
+
+# --- Tools / build output ---
+node_modules/
+.wrangler/
+.npm/
+
+# --- OS and editor clutter ---
+.DS_Store
+Thumbs.db
+desktop.ini
+*.log
+.vscode/
+.idea/
