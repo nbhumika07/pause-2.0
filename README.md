@@ -8,12 +8,6 @@
 
 A calm, private wellness web app: check in with your feelings, breathe, play quiet games, listen to soothing sounds, and write things down. Everything stays on your own device.
 
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)
-![Web Audio API](https://img.shields.io/badge/Web_Audio_API-8E7CC3)
-![IndexedDB](https://img.shields.io/badge/IndexedDB-local--first-5B7F67)
-![License: MIT](https://img.shields.io/badge/License-MIT-lightgrey)
 
 [Repository](https://github.com/nbhumika07/pause-2.0) · [Run it locally](#getting-started) · [Features](#features) · [Report an issue](https://github.com/nbhumika07/pause-2.0/issues)
 
@@ -320,13 +314,9 @@ These are **possible future improvements, not current features**:
 - More mini-games and guided moments
 - Testing and fixes for Firefox and Safari
 
-## License
-
-Released under the [MIT License](LICENSE). © 2026 Bhumika N.
 
 ## Acknowledgements
 
-- Fonts: [DM Sans](https://fonts.google.com/specimen/DM+Sans), [Manrope](https://fonts.google.com/specimen/Manrope) and [Fraunces](https://fonts.google.com/specimen/Fraunces) from Google Fonts.
 - Support information from India's [112](https://112.gov.in/) emergency service and the [Tele-MANAS](https://dghs.mohfw.gov.in/national-mental-health-programme.php) programme.
 - Bookshelf reflections are original writing inspired by book themes; they aren't quotations from the books.
 
