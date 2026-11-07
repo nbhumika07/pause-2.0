@@ -324,7 +324,7 @@ These are **possible future improvements, not current features**:
 
 <div align="center">
 
-Made with care by [Bhumika N](https://github.com/nbhumika07) · Feedback welcome through [Issues](https://github.com/nbhumika07/pause-2.0/issues)
+Feedback welcome through [Issues](https://github.com/nbhumika07/pause-2.0/issues)
 
 **Take a breath. You're doing better than you think. 🌙**
 
