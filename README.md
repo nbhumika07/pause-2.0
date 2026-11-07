@@ -10,12 +10,7 @@ A calm, private, local-first wellness web app with an optional AI companion, gui
 
 <sub>The live demo runs without AI (on-device suggestions only). AI features run locally. See <a href="#set-up-ai-optional">Set up AI</a>.</sub>
 
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)
-![JavaScript](https://img.shields.io/badge/Vanilla_JS-F7DF1E?logo=javascript&logoColor=black)
-![Web Audio API](https://img.shields.io/badge/Web_Audio_API-8E7CC3)
-![PWA](https://img.shields.io/badge/PWA-offline_ready-5A0FC8?logo=pwa&logoColor=white)
-![Cloudflare Workers](https://img.shields.io/badge/Cloudflare_Workers-F38020?logo=cloudflare&logoColor=white)
+
 
 <img src="docs/screenshots/welcome.jpg" alt="Pause welcome screen: a night garden with a moon and fireflies" width="900">
 
