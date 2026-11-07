@@ -1,17 +1,23 @@
 <div align="center">
 
-# Pause 🌙
+<img src="assets/icon.svg" alt="" width="84">
 
-### A little space to breathe, play, reflect and begin again.
+# Pause – A Little Space for You
 
-A calm, private, local-first wellness web app with an optional AI companion, guided breathing, quiet games and a generative sound mixer.
+**A little space to breathe, reflect, and reconnect with yourself.**
 
-[**Live demo →**](https://nbhumika07.github.io/pause/)
+A calm, private wellness web app: check in with your feelings, breathe, play quiet games, listen to soothing sounds, and write things down. Everything stays on your own device.
 
-<sub>The live demo runs without AI (on-device suggestions only). AI features run locally. See <a href="#set-up-ai-optional">Set up AI</a>.</sub>
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)
+![Web Audio API](https://img.shields.io/badge/Web_Audio_API-8E7CC3)
+![IndexedDB](https://img.shields.io/badge/IndexedDB-local--first-5B7F67)
+![License: MIT](https://img.shields.io/badge/License-MIT-lightgrey)
 
+[Repository](https://github.com/nbhumika07/pause-2.0) · [Run it locally](#getting-started) · [Features](#features) · [Report an issue](https://github.com/nbhumika07/pause-2.0/issues)
 
-<img src="docs/screenshots/welcome.jpg" alt="Pause welcome screen: a night garden with a moon and fireflies" width="900">
+<img src="docs/screenshots/welcome.jpg" alt="Pause welcome screen: a night garden with a moon and glowing fireflies" width="880">
 
 </div>
 
@@ -19,233 +25,317 @@ A calm, private, local-first wellness web app with an optional AI companion, gui
 
 ## Contents
 
-- [Why Pause](#why-pause)
+- [Overview](#overview)
 - [Screenshots](#screenshots)
 - [Features](#features)
-- [How the AI works](#how-the-ai-works)
+- [Getting started](#getting-started)
+- [How it works](#how-it-works)
 - [Tech stack](#tech-stack)
 - [Project structure](#project-structure)
-- [Run it locally](#run-it-locally)
-- [Set up AI (optional)](#set-up-ai-optional)
-- [Deploy](#deploy)
-- [Privacy and safety](#privacy-and-safety)
-- [Accessibility](#accessibility)
-- [Limitations and next steps](#limitations-and-next-steps)
+- [Privacy and data](#privacy-and-data)
+- [Browser support and accessibility](#browser-support-and-accessibility)
+- [Contributing](#contributing)
+- [Future ideas](#future-ideas)
+- [License](#license)
 
-## Why Pause
+## Overview
 
-Most wellness apps ask for an account, track you, and push streaks and notifications. Pause does the opposite:
+**Why Pause exists.** Everyday stress builds up quietly: exams, deadlines, people, too much screen time. Pause is a small place to step away for a few minutes, notice how you feel, and do one gentle thing about it.
 
-- **No account, no tracking.** Everything you write stays in your browser.
-- **No pressure.** No streaks, scores or guilt. You can stop any activity at any time.
-- **AI is optional and honest.** It only runs when you switch it on, agree to a clear consent notice, and press an AI button. Every result is labelled as AI or on-device.
-- **Works offline.** Breathing, games, sounds, journal and mood tracking all work without internet.
+**Who it's for.** Students and anyone who wants a quiet, low-pressure way to unwind and reflect, without signing up for anything.
+
+**What makes it different:**
+
+- 🔒 **Private by design.** No account, no tracking, and no app server storing your data. What you write stays in your browser.
+- 🌱 **No pressure.** No streaks, scores or reminders that make you feel guilty. Stop any activity whenever you like.
+- 📴 **Works offline.** After the first visit (through a local server), the app keeps working without internet.
+- 🤝 **Honest about its limits.** Pause supports self-reflection. It doesn't diagnose, and it points to real help (112 and Tele-MANAS in India) when someone may need it.
 
 ## Screenshots
 
-| Today dashboard | Sound mixer |
-|---|---|
-| <img src="docs/screenshots/today.jpg" alt="Today dashboard"> | <img src="docs/screenshots/sounds.jpg" alt="Sound mixer"> |
-| **Games hub** | **Breathing for how you feel** |
-| <img src="docs/screenshots/play.jpg" alt="Games hub"> | <img src="docs/screenshots/breathe.jpg" alt="Breathing page"> |
-| **Mood history** | **Journal assistant** |
-| <img src="docs/screenshots/mood.jpg" alt="Mood history chart"> | <img src="docs/screenshots/journal.jpg" alt="Journal with assistant"> |
+<table>
+  <tr>
+    <td width="50%"><img src="docs/screenshots/today.jpg" alt="Today dashboard"><br><sub><b>Today:</b> check-in, daily affirmation and small suggestions</sub></td>
+    <td width="50%"><img src="docs/screenshots/play.jpg" alt="Games hub"><br><sub><b>Take a Little Break:</b> the games hub with a game of the day</sub></td>
+  </tr>
+  <tr>
+    <td><img src="docs/screenshots/breathe.jpg" alt="Guided breathing"><br><sub><b>Breathe:</b> a pattern suggested for how you feel</sub></td>
+    <td><img src="docs/screenshots/sounds.jpg" alt="Sound mixer"><br><sub><b>Sounds:</b> mix soundscapes, each with its own volume</sub></td>
+  </tr>
+  <tr>
+    <td><img src="docs/screenshots/mood.jpg" alt="Mood history chart"><br><sub><b>Mood history:</b> week, 30-day and calendar views</sub></td>
+    <td><img src="docs/screenshots/journal.jpg" alt="Journal with assistant"><br><sub><b>Journal:</b> private entries with gentle reflection prompts</sub></td>
+  </tr>
+</table>
 
-<p align="center"><img src="docs/screenshots/mobile.jpg" alt="Pause on mobile: companion, bubble game and sounds" width="760"></p>
+<p align="center"><img src="docs/screenshots/mobile.jpg" alt="Pause on a phone: companion, bubble game and sound mixer" width="720"><br><sub>Designed mobile-first</sub></p>
 
 ## Features
 
-### 🌤 Today
-A gentle dashboard with today's check-in, a daily affirmation, activity suggestions you can filter by time available, a quick way into the companion, your week's mood, recent journal entries, and activity and reading progress.
+### 🌡 Mood check-ins
+- Describe your day on a five-step scale, from "Really heavy" to "Light and good".
+- Pick from **24 feeling tags**, add a note, and optionally tick "Today I…" factors such as *time outside* or *long study day*.
+- **History** shows your mood as a week or 30-day line chart, or a month calendar. Each chart has a table view, and you can edit or delete any entry.
+- **Insights** summarise your week and point out possible patterns on your device, always phrased as things you *might notice*, never as causes.
 
-### 💬 Companion (AI, optional)
-A conversation companion with six modes: *vent*, *understand my feelings*, *motivation*, *calm down*, *just listen*, and *give me an activity*. It can suggest a real in-app activity as a card you can start. It doesn't diagnose or claim to be a therapist, and in long conversations it gently encourages talking to people you trust. Conversations aren't saved unless you choose "Save to journal".
+### 🫁 Guided breathing
+- Five patterns (longer exhale, box, even breathing, 4·7·8, double-inhale sigh) plus your own custom timing, with sessions from 1 to 10 minutes.
+- **Breathing for how you feel:** pick a feeling and Pause suggests a pattern, a length and a reason. After each session it asks whether it helped, and remembers what worked for you.
+- Optional soft breath sounds timed to the circle, gentle chimes, background ambience, or silence.
 
-### 🌡 Mood check-ins and insights
-- Choose an overall feeling, emotion tags, notes, and "Today I…" factors such as sleep, time outside, or a long study day.
-- See your history as week and 30-day line charts and a month calendar. All charts are accessible SVG with tooltips and a table view.
-- On-device insights show possible patterns, always phrased as "you might notice", never as causes.
-- An optional AI weekly reflection. Your written notes are only sent if you tick a box.
+### 🎮 Wellness mini-games
+Six quiet games, each with an intro screen, a choice of pace (Gentle, Steady or Focused), pause, restart and exit, and a calm completion screen. There are no timers, scores or penalties.
 
-### 📓 Journal
-Private entries with daily prompts, search, categories and draft autosave. Five assistant tools: **reflect** (gentle questions), **organise my thoughts** into sections, **summarise**, **positive takeaway**, and **suggest a category**. AI only reads an entry if you switch on "Allow AI" for that entry. Otherwise the tools run on your device.
-
-### 🫁 Breathe
-- Five patterns (longer exhale, box, even, 4·7·8, double-inhale sigh) plus your own custom timing.
-- **Breathing for how you feel:** pick or describe a feeling and Pause suggests a pattern and length, with a reason.
-- After each session it asks whether it helped. Future suggestions favour what worked for you and skip what didn't.
-- Soft inhale and exhale sounds timed to the animation, optional chimes, background ambience, and a silent mode.
-
-### 🎮 Take a Little Break: six quiet games
-Each game has an intro, a choice of pace (Gentle, Steady or Focused), pause, resume, restart and exit, a gentle goal and a completion screen. Sound effects are optional, and every game has a reduced-motion version.
-
-| Game | What's special |
+| Game | What you do |
 |---|---|
-| Catch the Fireflies | Stars, swaying grass, sparks; keyboard friendly |
-| Bubble Pop | Bubbles rise and burst; missed ones just float away |
-| Fluid Art | Palettes, brush, flow, 2/4/6-way mirror mode, save as image |
-| Bubble Wrap | Press and drag to pop a whole row |
-| Five Senses | 5-4-3-2-1 grounding with optional notes saved to your journal |
-| Alphabet Categories | Letter and category rounds; your words shown at the end |
+| **Catch the Fireflies** | Tap glowing fireflies (or press Enter) and watch them drift into the night sky |
+| **Bubble Pop** | Pop bubbles as they float upward; missed ones just drift away |
+| **Fluid Art** | Paint soft colour trails, try mirror patterns, and save your picture |
+| **Bubble Wrap** | Pop a sheet of bubbles, or press and drag to pop a whole row |
+| **Five Senses** | A 5-4-3-2-1 grounding exercise, with optional notes you can save to your journal |
+| **Alphabet Categories** | Think of a word for a letter and category; there are no wrong answers |
 
-There's also a game of the day, recently played games, favourites, a private play journal, and six short **guided moments** (two-minute start, thought dump, gentle reset, three small things, body scan, reach out).
+The games page also has a **game of the day**, recently played games, favourites, a private play history, and six short **guided moments** (two-minute start, thought dump, gentle reset, three small things, body scan, reach out).
 
-### 🎧 Sounds
-- **13 soundscapes generated in your browser:** rain, distant thunder, ocean, forest, wind, crickets, fireplace, stream, white, pink and brown noise, deep focus, and soft tones.
-- Layer several at once with separate volumes and smooth crossfades.
-- Adjustable fade-in and fade-out, a sleep timer, and a live visualiser.
-- Six presets, plus your own saved mixes, favourites and recently played.
+### 🎧 Ambient audio
+- **13 soundscapes generated live in your browser**, with no audio files needed: rain, distant thunder, ocean waves, forest, soft wind, night crickets, fireplace, stream, white, pink and brown noise, deep focus, and soft tones.
+- Play several at once, each with its **own volume**, and they fade smoothly in and out.
+- **Six presets** (such as *Rainy Evening* and *Cozy Night*), plus your own saved mixes, favourites and recently played.
+- A sleep timer, adjustable fade times, a master volume, a live visualiser, and optional soft sound effects in games.
 
-### 📚 Read, ✨ Affirmations, 📝 Therapy notes
-- **Read:** 37 short articles with smart search, "what do you need" categories, reading time, bookmarks, a distraction-free reader, and optional summaries.
-- **Affirmations:** 42 realistic affirmations in 8 categories, a daily pick, ones matched to your mood, AI-written ones, and your own words.
-- **Therapy notes:** a structured note to bring to a counsellor. A brain-dump box sorts your words under the headings.
+### ✨ Daily affirmations
+- A new affirmation every day, chosen from **42 affirmations in 8 categories** such as Confidence, Self-compassion and Rest & calm.
+- Browse by category, get one that matches your latest check-in, or write your own.
+- Save favourites to come back to later.
 
-## How the AI works
+### 📓 Journal and reflections
+- Private journal entries with **daily writing prompts**, search, categories and automatic draft saving.
+- **Journal assistant:** reflection questions, organise scattered thoughts into sections, summarise, find a positive takeaway, or suggest a category.
+- **My Notes for Therapy:** a structured note to prepare for talking with a counsellor. It can sort a brain dump under its nine headings, and you can print it or export it as text.
+- **Companion:** a supportive chat with six modes (*vent*, *understand my feelings*, *motivation*, *calm down*, *just listen*, *give me an activity*). It isn't saved unless you choose "Save to journal".
+
+### 📚 Reading library
+- **37 short, original articles** on everyday struggles such as exam stress, loneliness, overthinking and rest, plus 8 "bookshelf" reflections.
+- **Smart search** (for example, "exams" also finds *academic pressure*), browse by need, reading times, and read markers.
+- Bookmarks, a distraction-free reader with adjustable text size, and space to save your own takeaways.
+
+### 🌤 Today dashboard
+Your check-in, the daily affirmation, three suggestions chosen for your mood and the time you have, your week at a glance, recent journal entries, and reading progress, all on one calm page.
+
+### 🔒 Privacy and settings
+- Light, night or match-device theme, reduced motion, and personal goals and preferences.
+- **Export** all your data as a JSON file, **import** a backup, or **delete** any type of data, or everything at once.
+
+> **Optional AI (runs locally only).** The companion, journal assistant, weekly reflection, affirmations, article summaries and breathing suggestions can use an AI model, but only if you run the included local backend with your own API key, switch AI on in Settings, and accept a consent notice. AI is **off by default**, and every feature has an on-device version. Results are always labelled *AI suggestion* or *On-device suggestion*. See [Optional: AI features](#optional-ai-features).
+
+## Getting started
+
+### Prerequisites
+- A modern browser. Pause was tested in Chromium, the engine behind Chrome and Edge.
+- **One** way to run a simple local web server:
+  - **Python 3**, or
+  - **Node.js 18+**, which is also needed for the optional AI features.
+- Git, to clone the repository.
+
+### Installation
+
+```bash
+git clone https://github.com/nbhumika07/pause-2.0.git
+cd pause-2.0
+```
+
+### Running locally
+
+Pause is a static site, but it should be served over a local server rather than opened as a file. Browser storage, the offline cache and audio work most reliably that way.
+
+**Option A: Python**
+```bash
+python -m http.server 8000
+```
+Then open <http://localhost:8000>.
+
+**Option B: Node.js** (also enables the AI backend in test mode)
+```bash
+node backend/dev-server.js
+```
+Then open <http://localhost:8787>.
+
+To stop the server, press `Ctrl + C`.
+
+### Live demo
+There's no public deployment at the moment. Run it locally with the steps above.
+
+### Optional: AI features
+
+1. Get an API key from a provider. For example, Google Gemini at <https://aistudio.google.com/apikey>.
+2. Copy `backend/.dev.vars.example` to `backend/.dev.vars`. This file is git-ignored, so your key is never committed. Fill it in:
+   ```ini
+   PROVIDER=openai
+   OPENAI_BASE_URL=https://generativelanguage.googleapis.com/v1beta/openai
+   MODEL=your-model-name
+   OPENAI_API_KEY=your-key
+   ```
+   Model names change over time, so check your provider's current list. Claude is also supported (`PROVIDER=anthropic`).
+3. Run `node backend/dev-server.js`, open **Settings → AI assistance**, switch AI on and press **Test**.
+
+Without a key, the backend runs in **test mode**: replies are placeholders clearly labelled "Test mode · not AI".
+
+## How it works
 
 ```mermaid
 flowchart LR
-    A[Browser · GitHub Pages<br/>no API key here] -- "POST only after consent<br/>+ button press" --> B[Cloudflare Worker<br/>backend/worker.js]
-    B -- "API key from<br/>environment secret" --> C[AI provider<br/>Gemini / Claude / OpenAI-compatible]
-    A -. "AI off or failed" .-> D[On-device fallback<br/>clearly labelled]
+    A([Open Pause]) --> B[Check in<br/>feelings + mood]
+    B --> C{Personalised<br/>suggestions}
+    C --> D[🫁 Breathe]
+    C --> E[🎮 Play]
+    C --> F[🎧 Sounds]
+    C --> G[📓 Journal / Companion]
+    D --> H[Did it help?]
+    H -. learns what works .-> C
+    E --> J[(Saved only<br/>on this device)]
+    F --> J
+    G --> J
+    J --> K[📈 Mood insights]
+    K -.-> B
 ```
 
-- **No key in the browser.** Anything on GitHub Pages is public, so the key lives only in the Worker as an encrypted secret.
-- **Prompts on the server.** System prompts and safety rules are written on the server, so the browser can't change them.
-- **Origin allow-list.** Only your site's address can call the backend. Request size and request rate are limited too.
-- **No storage.** The backend doesn't store or log anything users write.
-- **Two-layer safety check.** Crisis language is detected on the device first and shows real support options. The backend checks again and switches the AI to short, safety-focused replies.
-- **Graceful fallback.** Every AI feature has an on-device version, so the app never breaks when AI is off, offline or out of quota.
+**In plain terms:**
+
+- **One page, many screens.** `index.html` loads the app once. Moving between screens (Today, Mood, Play…) swaps the content without reloading, using the part of the address after `#`.
+- **JavaScript runs everything.** Each screen is a small file in `assets/js/pages/`. Shared helpers handle saving, dialogs, notifications and suggestions.
+- **Sound is created, not downloaded.** The Web Audio API generates the sounds live from filtered noise, tones and tiny pre-made sound events (raindrops, crackles, bubbles, crickets). One audio engine mixes them, fades them, and uses a limiter so they never distort.
+- **Your data lives in your browser.** Check-ins, journal entries, notes, bookmarks and activity history are saved in **IndexedDB**, a database built into the browser. If IndexedDB isn't available, Pause falls back to **localStorage**. Small preferences (theme, sound mix, favourites) are kept in localStorage.
+- **No server needed for normal use.** The app works with just static files. The `backend/` folder is only needed for the optional AI features, and it runs on your own computer.
+- **Works offline.** A service worker saves the app's files after the first visit, so it opens even without internet.
 
 ## Tech stack
 
-| Area | Choice | Why |
-|---|---|---|
-| Front end | HTML, CSS, vanilla JavaScript | No framework or build step; runs directly on GitHub Pages |
-| Storage | IndexedDB with a localStorage fallback | Private, on-device, survives reloads; export and import as JSON |
-| Audio | Web Audio API: one AudioContext, buses, BiquadFilters, StereoPanner, Convolver reverb, DynamicsCompressor limiter, AnalyserNode | Rich generated sound with no audio files |
-| Charts | Hand-built SVG | Accessible, small and themeable |
-| Offline | Service worker and web app manifest | Installable, works without internet |
-| Backend | Cloudflare Worker (serverless) | Free tier; keeps the API key secret |
-| AI | Any OpenAI-compatible API (e.g. Google Gemini) or Anthropic Claude | Switch providers with one setting |
+| Technology | Role in Pause |
+|---|---|
+| **HTML5** | Page structure and semantic, accessible markup |
+| **CSS3** | The design system: light and night themes, responsive layouts, animations, reduced-motion support |
+| **JavaScript** (vanilla, no framework) | Screens, navigation, games, suggestions and charts |
+| **Web Audio API** | Generated soundscapes, mixing, game sound effects and breathing cues |
+| **IndexedDB** | Main on-device storage for check-ins, journal, notes, bookmarks and activity |
+| **localStorage** | Preferences, saved sound mixes and drafts, and a fallback if IndexedDB is unavailable |
+| **Canvas and SVG** | Fireflies and fluid art (Canvas); mood charts (SVG) |
+| **Service worker and web app manifest** | Offline support; installable as an app |
+| **Node.js** (optional) | Local server for the optional AI backend in `backend/` |
 
 ## Project structure
 
 ```text
-pause/
-├── index.html                 # Entry point
-├── manifest.webmanifest       # Install as an app
-├── sw.js                      # Offline cache (never caches AI requests)
-├── .nojekyll                  # Serve files as-is on GitHub Pages
+pause-2.0/
+├── index.html                # Entry point: loads styles and scripts
+├── manifest.webmanifest      # App name, icons and colours (installable app)
+├── sw.js                     # Service worker for offline use
+├── LICENSE                   # MIT License
 ├── assets/
-│   ├── css/styles.css         # Design system: light and night themes, responsive
-│   ├── icon.svg, icon-*.png   # App icons
+│   ├── css/styles.css        # All styling, themes and responsive layout
+│   ├── icon.svg, icon-*.png  # App icons
 │   └── js/
-│       ├── config.js          # Public settings: backend address only, never secrets
-│       ├── core.js            # Helpers, preferences, toasts, dialogs, router
-│       ├── storage.js         # IndexedDB with fallback, export/import
-│       ├── catalog.js         # Feelings, goals, activities, affirmations, prompts
-│       ├── safety.js          # On-device crisis-language check and support card
-│       ├── ai.js              # AI service layer, consent, on-device fallbacks
-│       ├── recommend.js       # Personalised suggestions (on-device)
-│       ├── charts.js          # Mood charts
-│       ├── games.js           # The six games (modules)
-│       ├── audio/
-│       │   ├── engine.js      # AudioContext, buses, limiter, reverb, fades, sound effects
-│       │   ├── soundscapes.js # 13 generated soundscapes and 6 presets
-│       │   └── mixer.js       # Multi-layer mixer, saved mixes, sleep timer, player bar
-│       ├── pages/             # One file per screen
-│       └── app.js             # App shell and navigation
-├── data/                      # Reading library content
-├── docs/screenshots/          # Images used in this README
-└── backend/
-    ├── worker.js              # Serverless AI backend
-    ├── wrangler.toml          # Worker settings (no secrets)
-    ├── dev-server.js          # Local server for the site and the backend
-    └── .dev.vars.example      # Template for local secrets (copy to .dev.vars)
+│       ├── config.js         # Public settings (AI address, optional audio files)
+│       ├── core.js           # Helpers, preferences, dialogs, notifications, navigation
+│       ├── storage.js        # IndexedDB storage with localStorage fallback; export/import
+│       ├── catalog.js        # Content: feelings, activities, affirmations, prompts
+│       ├── recommend.js      # Chooses personalised suggestions
+│       ├── safety.js         # Detects crisis language and shows support options
+│       ├── ai.js             # Optional AI: consent, requests and on-device fallbacks
+│       ├── charts.js         # Mood charts
+│       ├── games.js          # The six mini-games
+│       ├── audio/            # Audio engine, 13 soundscapes and the mixer
+│       ├── pages/            # One file per screen (today, mood, journal, play, …)
+│       └── app.js            # App shell and navigation bar
+├── data/                     # Reading library articles and bookshelf reflections
+├── docs/screenshots/         # Images used in this README
+└── backend/                  # Optional: local AI backend
+    ├── worker.js             # Writes prompts and safety rules, calls the AI provider
+    ├── dev-server.js         # Serves the app and the AI backend on localhost:8787
+    └── .dev.vars.example     # Template for your private API key settings
 ```
 
-## Run it locally
+**Where to start:** to add content, edit `assets/js/catalog.js` or the files in `data/`. To change a screen, edit its file in `assets/js/pages/`.
 
-**Just the app (no AI).** From the project folder:
+## Privacy and data
 
-```bash
-python -m http.server 8000
-```
+- **No account is needed**, and Pause has no analytics or tracking.
+- **Your personal data stays on your device.** It's stored in your browser's IndexedDB and localStorage. It isn't uploaded anywhere and doesn't sync to other devices or browsers.
+- **External requests.** Fonts load from Google Fonts. None of your entries are included in those requests. Nothing else is contacted, unless you set up and switch on the optional AI.
+- **Optional AI.** When enabled, only the text for the action you choose is sent, through your own local backend, to the AI provider you configured. That provider's privacy terms apply. A consent notice explains this before anything is sent.
+- **You're in control.** Go to **Settings → Your data** to export a backup, import one, or delete a single type of data or everything.
+- **Good to know.** Clearing your browser's site data also deletes Pause's data, and browser storage isn't encrypted. Export a backup if you want to keep your entries.
 
-Then open <http://localhost:8000>.
+> Pause is a self-reflection tool. It does not diagnose, provide crisis care, or replace a qualified mental-health professional. In India, call **112** in an emergency, or **Tele-MANAS** at **14416** / **1-800-891-4416** (free, 24×7) for mental-health support.
 
-**App and AI backend together** (Node.js 18 or newer):
+## Browser support and accessibility
 
-```bash
-node backend/dev-server.js
-```
+**Tested in:** Chromium (the engine behind Chrome and Edge) on desktop, plus Chromium's iPhone-sized mobile emulation. Firefox and Safari use the same standard web features but haven't been tested yet. Reports are welcome.
 
-Then open <http://localhost:8787>. Without a key, the backend runs in **test mode**: AI answers are placeholders labelled "Test mode · not AI", so you can check the whole flow safely.
+**Accessibility:**
+- **Keyboard** works throughout: a skip link, visible focus outlines, Escape to close dialogs or pause games, and Enter to release fireflies.
+- **Screen readers:** headings, labels and live announcements for status messages. Mood history charts have a "View as table" option.
+- **Reduced motion** follows your device setting, or can be switched on in Settings. Animations and games switch to calmer versions.
+- **Responsive, mobile-first layouts** with large touch targets.
+- **Light, night and match-device themes.**
 
-## Set up AI (optional)
+**Audio notes and known limitations:**
+- Browsers only allow sound after you tap or click something, so sound never starts on its own.
+- On iPhone, web audio is silent when the ring/silent switch is on silent.
+- Data isn't shared between browsers or devices. Use export and import to move it.
 
-1. **Get an API key.** For example, a free Google Gemini key from <https://aistudio.google.com/apikey>.
-2. **Create `backend/.dev.vars`** (it's git-ignored) for local testing:
+## Contributing
 
-   ```ini
-   PROVIDER=openai
-   OPENAI_BASE_URL=https://generativelanguage.googleapis.com/v1beta/openai
-   MODEL=gemini-3.5-flash-lite
-   OPENAI_API_KEY=your-key-here
+Contributions are welcome: bug reports, accessibility improvements, new content, and new ideas.
+
+1. **Fork** the repository on GitHub, then clone your fork:
+   ```bash
+   git clone https://github.com/<your-username>/pause-2.0.git
+   cd pause-2.0
    ```
+2. **Create a branch** for your change:
+   ```bash
+   git checkout -b feature/short-description
+   ```
+3. **Make your changes** and test them locally (see [Running locally](#running-locally)).
+4. **Commit and push:**
+   ```bash
+   git add .
+   git commit -m "Describe your change"
+   git push origin feature/short-description
+   ```
+5. **Open a pull request** on GitHub and describe what you changed and why.
 
-   Model names change over time. Check your provider's current list. To use Claude, set `PROVIDER=anthropic`, `ANTHROPIC_API_KEY` and `MODEL`.
-3. **Run and test.** Start `node backend/dev-server.js`, open **Settings → AI assistance**, switch on AI, then press **Test**. It sends one small real request and shows the provider's exact error if something's wrong.
+Please keep the app calm and pressure-free: no streaks, scores or guilt-based features. Never commit API keys or `backend/.dev.vars`.
 
-## Deploy
+Found a problem? [Open an issue](https://github.com/nbhumika07/pause-2.0/issues).
 
-### Website on GitHub Pages
+## Future ideas
 
-```bash
-git add -A
-git commit -m "Describe your change"
-git push
-```
+These are **possible future improvements, not current features**:
 
-On GitHub, open **Settings → Pages**, choose **Deploy from a branch**, then **main** and **/ (root)**, and save. The site appears at `https://<username>.github.io/<repo>/`.
+- Hosted AI, so the optional AI features work outside a local setup
+- Optional accounts and encrypted cloud sync across devices
+- Recorded nature soundscapes alongside the generated ones (the app can already load audio files listed in `config.js`)
+- More languages, for example Hindi and Kannada
+- More mini-games and guided moments
+- Testing and fixes for Firefox and Safari
 
-> After changing files, bump `VERSION` in `sw.js` so returning visitors get the update.
+## License
 
-### About AI on the live site
+Released under the [MIT License](LICENSE). © 2026 Bhumika N.
 
-The published site is static, so **AI features are off there** and every feature uses its on-device fallback. This is intentional: GitHub Pages can't keep an API key secret, and a key in front-end code would be public. AI runs locally through `backend/dev-server.js`, with the key kept in the git-ignored `backend/.dev.vars`.
+## Acknowledgements
 
-To enable AI online later, deploy `backend/worker.js` to a serverless host. It's ready for Cloudflare Workers (`npx wrangler deploy` from `backend/`, with the key added via `npx wrangler secret put`). Then set the Worker URL as `aiEndpoint` in `assets/js/config.js`.
-
-## Privacy and safety
-
-- Check-ins, journal entries, notes, bookmarks, affirmations and activity history are stored only in your browser (IndexedDB).
-- **Settings → Your data** lets you export everything, import a backup (it merges and never deletes), or delete any type of data.
-- Before anything is sent to AI, a consent notice explains exactly what's sent, where it goes and what isn't sent. Each AI feature can be switched off on its own.
-- If crisis language is detected, Pause shows **112** (emergency, India), **Tele-MANAS 14416 / 1-800-891-4416** (free, 24×7) and a ready-to-send message for someone you trust.
-
-> **Pause is a self-reflection and wellness tool. It does not diagnose, provide crisis care, or replace a qualified mental-health professional.** Service details can change; check the official [112](https://112.gov.in/) and [Tele-MANAS](https://dghs.mohfw.gov.in/national-mental-health-programme.php) pages.
-
-## Accessibility
-
-- Semantic HTML, a skip link, visible focus styles, and keyboard support everywhere, including the games.
-- Dialogs keep focus inside them and close with Escape. Charts have table alternatives. Status messages are announced to screen readers.
-- Light, night and match-device themes, built with accessible contrast in mind.
-- Respects **reduced motion**, either from your device or the in-app setting. Games and animations have calmer alternatives.
-- Mobile-first layouts with large touch targets.
-
-## Limitations and next steps
-
-- Data lives in one browser. There's no sync between devices, by design. Use export and import to move it.
-- Sounds are generated in the browser. Real recordings can sound more natural: add royalty-free files in `assets/audio/` and list them under `audioAssets` in `config.js`, and Pause falls back to the generated sound if a file fails to load.
-- On iPhone, web audio is muted when the ring/silent switch is on silent.
-- Ideas: optional encrypted cloud backup, more languages (Hindi, Kannada), and RAG over the reading library for grounded answers.
+- Fonts: [DM Sans](https://fonts.google.com/specimen/DM+Sans), [Manrope](https://fonts.google.com/specimen/Manrope) and [Fraunces](https://fonts.google.com/specimen/Fraunces) from Google Fonts.
+- Support information from India's [112](https://112.gov.in/) emergency service and the [Tele-MANAS](https://dghs.mohfw.gov.in/national-mental-health-programme.php) programme.
+- Bookshelf reflections are original writing inspired by book themes; they aren't quotations from the books.
 
 ---
 
 <div align="center">
 
-Built by [@nbhumika07](https://github.com/nbhumika07) · Made to make a little room for yourself 🌙
+Made with care by [Bhumika N](https://github.com/nbhumika07) · Feedback welcome through [Issues](https://github.com/nbhumika07/pause-2.0/issues)
+
+**Take a breath. You're doing better than you think. 🌙**
 
 </div>
