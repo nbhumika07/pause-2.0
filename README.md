@@ -9,7 +9,7 @@
 A calm, private wellness web app: check in with your feelings, breathe, play quiet games, listen to soothing sounds, and write things down. Everything stays on your own device.
 
 
-[Repository](https://github.com/nbhumika07/pause-2.0) · [Run it locally](#getting-started) · [Features](#features) · [Report an issue](https://github.com/nbhumika07/pause-2.0/issues)
+[**Live demo**](https://nbhumika07.github.io/pause-2.0/) · [Repository](https://github.com/nbhumika07/pause-2.0) · [Run it locally](#getting-started) · [Features](#features) · [Report an issue](https://github.com/nbhumika07/pause-2.0/issues)
 
 <img src="docs/screenshots/welcome.jpg" alt="Pause welcome screen: a night garden with a moon and glowing fireflies" width="880">
 
@@ -120,7 +120,7 @@ Your check-in, the daily affirmation, three suggestions chosen for your mood and
 - Light, night or match-device theme, reduced motion, and personal goals and preferences.
 - **Export** all your data as a JSON file, **import** a backup, or **delete** any type of data, or everything at once.
 
-> **Optional AI (runs locally only).** The companion, journal assistant, weekly reflection, affirmations, article summaries and breathing suggestions can use an AI model, but only if you run the included local backend with your own API key, switch AI on in Settings, and accept a consent notice. AI is **off by default**, and every feature has an on-device version. Results are always labelled *AI suggestion* or *On-device suggestion*. See [Optional: AI features](#optional-ai-features).
+> **Optional AI.** The companion, journal assistant, weekly reflection, affirmations, article summaries and breathing suggestions can use Google Gemini through a serverless backend on Cloudflare Workers. It only runs after you switch AI on in Settings and accept a consent notice. AI is **off by default**, and every feature has an on-device version. Results are always labelled *AI suggestion* or *On-device suggestion*. See [Optional: AI features](#optional-ai-features).
 
 ## Getting started
 
@@ -157,7 +157,11 @@ Then open <http://localhost:8787>.
 To stop the server, press `Ctrl + C`.
 
 ### Live demo
-There's no public deployment at the moment. Run it locally with the steps above.
+Try Pause at **https://nbhumika07.github.io/pause-2.0/**. It's hosted on GitHub Pages, with AI features served by a Cloudflare Worker. AI is off until you switch it on in **Settings → AI assistance**.
+
+### Deployment
+- **Website:** GitHub Pages, from the `main` branch.
+- **AI backend:** Cloudflare Workers. Deploy from `backend/` with `npx wrangler deploy`. The API key is added with `npx wrangler secret put OPENAI_API_KEY` and is never committed.
 
 ### Optional: AI features
 
@@ -199,7 +203,7 @@ flowchart LR
 - **JavaScript runs everything.** Each screen is a small file in `assets/js/pages/`. Shared helpers handle saving, dialogs, notifications and suggestions.
 - **Sound is created, not downloaded.** The Web Audio API generates the sounds live from filtered noise, tones and tiny pre-made sound events (raindrops, crackles, bubbles, crickets). One audio engine mixes them, fades them, and uses a limiter so they never distort.
 - **Your data lives in your browser.** Check-ins, journal entries, notes, bookmarks and activity history are saved in **IndexedDB**, a database built into the browser. If IndexedDB isn't available, Pause falls back to **localStorage**. Small preferences (theme, sound mix, favourites) are kept in localStorage.
-- **No server needed for normal use.** The app works with just static files. The `backend/` folder is only needed for the optional AI features, and it runs on your own computer.
+- **No server needed for normal use.** The app works with just static files. The `backend/` folder is only needed for the optional AI features. On the live site it runs as a Cloudflare Worker, which holds the API key so it never appears in the website's code. Locally, `backend/dev-server.js` runs the same code.
 - **Works offline.** A service worker saves the app's files after the first visit, so it opens even without internet.
 
 ## Tech stack
@@ -214,7 +218,10 @@ flowchart LR
 | **localStorage** | Preferences, saved sound mixes and drafts, and a fallback if IndexedDB is unavailable |
 | **Canvas and SVG** | Fireflies and fluid art (Canvas); mood charts (SVG) |
 | **Service worker and web app manifest** | Offline support; installable as an app |
-| **Node.js** (optional) | Local server for the optional AI backend in `backend/` |
+| **Cloudflare Workers** | Hosts the AI backend; stores the API key as an encrypted secret |
+| **Google Gemini API** | AI model behind the optional AI features |
+| **GitHub Pages** | Hosts the website |
+| **Node.js** (optional) | Runs the app and AI backend locally for development |
 
 ## Project structure
 
@@ -242,9 +249,10 @@ pause-2.0/
 │       └── app.js            # App shell and navigation bar
 ├── data/                     # Reading library articles and bookshelf reflections
 ├── docs/screenshots/         # Images used in this README
-└── backend/                  # Optional: local AI backend
+└── backend/                  # AI backend (deployed as a Cloudflare Worker)
     ├── worker.js             # Writes prompts and safety rules, calls the AI provider
     ├── dev-server.js         # Serves the app and the AI backend on localhost:8787
+    ├── wrangler.toml         # Cloudflare Worker settings (no secrets)
     └── .dev.vars.example     # Template for your private API key settings
 ```
 
@@ -255,7 +263,7 @@ pause-2.0/
 - **No account is needed**, and Pause has no analytics or tracking.
 - **Your personal data stays on your device.** It's stored in your browser's IndexedDB and localStorage. It isn't uploaded anywhere and doesn't sync to other devices or browsers.
 - **External requests.** Fonts load from Google Fonts. None of your entries are included in those requests. Nothing else is contacted, unless you set up and switch on the optional AI.
-- **Optional AI.** When enabled, only the text for the action you choose is sent, through your own local backend, to the AI provider you configured. That provider's privacy terms apply. A consent notice explains this before anything is sent.
+- **Optional AI.** When enabled, only the text for the action you choose is sent, through the Pause backend (a Cloudflare Worker, which doesn't store or log it), to Google Gemini. That provider's privacy terms apply. A consent notice explains this before anything is sent.
 - **You're in control.** Go to **Settings → Your data** to export a backup, import one, or delete a single type of data or everything.
 - **Good to know.** Clearing your browser's site data also deletes Pause's data, and browser storage isn't encrypted. Export a backup if you want to keep your entries.
 
@@ -307,7 +315,6 @@ Found a problem? [Open an issue](https://github.com/nbhumika07/pause-2.0/issues)
 
 These are **possible future improvements, not current features**:
 
-- Hosted AI, so the optional AI features work outside a local setup
 - Optional accounts and encrypted cloud sync across devices
 - Recorded nature soundscapes alongside the generated ones (the app can already load audio files listed in `config.js`)
 - More languages, for example Hindi and Kannada
