@@ -1,6 +1,6 @@
 /* Offline support: caches the app so every core feature works without internet.
    AI requests (POST) are never cached. Bump VERSION when you change files. */
-const VERSION = 'pause-v3.2.1';
+const VERSION = 'pause-v3.2.2';
 const SHELL = [
   './', 'index.html', 'manifest.webmanifest', 'assets/icon.svg', 'assets/icon-192.png',
   'assets/css/styles.css',
